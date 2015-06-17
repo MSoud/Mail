@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @user.firstName %></td>
+        <td><%= @user.lastName %></td>
+        <td><%= @user.phone %></td>
+        <td><%= @user.email %></td>
+        <td><%= link_to 'Edit', edit_user_path(@user) %> 
+        <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.sender %></td>
+        <td><%= message.reciever %></td>
+        <td><%= message.content %></td>
+        <td><%= link_to 'Show', message %> <%= link_to 'Edit', edit_message_path(message) %> 
+        <%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%=  link_to 'New Message', new_user_message_path(2)
+%>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

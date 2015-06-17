@@ -1,0 +1,21 @@
+<%= form_for(@message, url: @form_path) do |f| %>
+  <p><%= "here" %></p>
+  <p><%= @form_path %></p>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <label>Sender</label><%= f.number_field(:sender,value: @sender, in: 1..@max_count, step: 1) %><br>
+  <label>Reciever</label><%= f.number_field(:reciever,value: @reciever, in: 1..@max_count, step: 1) %><br>
+  <label>Content</label><%= f.text_area :content %><br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
